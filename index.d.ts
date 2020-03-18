@@ -41,6 +41,7 @@ export interface ThemeProps<T> {
 
 export type ThemedStyledProps<P, T> = P & ThemeProps<T>;
 export type StyledProps<P> = ThemedStyledProps<P, AnyIfEmpty<DefaultTheme>>;
+export type Realm = (name: string) => string;
 
 // Any prop that has a default prop becomes optional, but its type is unchanged
 // Undeclared default props are augmented into the resulting allowable attributes
@@ -288,7 +289,7 @@ export type StyledComponentInnerAttrs<
 
 export interface ThemedBaseStyledInterface<T extends object>
     extends ThemedStyledComponentFactories<T> {
-    <C extends AnyStyledComponent>(component: C): ThemedStyledFunction<
+    <C extends AnyStyledComponent>(component: C, realm?: Realm): ThemedStyledFunction<
         StyledComponentInnerComponent<C>,
         T,
         StyledComponentInnerOtherProps<C>,
@@ -297,7 +298,8 @@ export interface ThemedBaseStyledInterface<T extends object>
     <C extends keyof JSX.IntrinsicElements | React.ComponentType<any>>(
         // unfortunately using a conditional type to validate that it can receive a `theme?: Theme`
         // causes tests to fail in TS 3.1
-        component: C
+        component: C,
+        realm?: Realm
     ): ThemedStyledFunction<C, T>;
 }
 
