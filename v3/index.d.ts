@@ -15,7 +15,7 @@ export interface ThemeProps<T> {
 
 export type ThemedStyledProps<P, T> = P & ThemeProps<T>;
 export type StyledProps<P> = ThemedStyledProps<P, any>;
-export type Realm = (name: string) => string;
+export function Realm(name: string): string;
 
 export type ThemedOuterStyledProps<P, T> = P & {
     theme?: T;
