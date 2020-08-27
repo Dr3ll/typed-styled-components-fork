@@ -1,4 +1,5 @@
 {
+    "name": "@types/styled-components",
     "private": false,
     "dependencies": {
         "csstype": "^2.2.0"
