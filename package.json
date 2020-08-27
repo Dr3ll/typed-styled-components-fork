@@ -1,5 +1,5 @@
 {
-    "private": true,
+    "private": false,
     "dependencies": {
         "csstype": "^2.2.0"
     },
